@@ -41,8 +41,9 @@ akan di POST dan sehingga di set (update) status seseorang tersebut is_wafat nya
 orang tersebut akan tidak ada tombol tersebut kembali
 
 Fitur8: 
-Untuk pemilihan cari penduduk melalui dropdown (konsepnya seperti yang dilakukan di Menambah keluarga).
-Seharusnya akan menampilkan cari berdasarkan lokasi
+Untuk pemilihan cari penduduk melalui dropdown (konsepnya seperti yang dilakukan di Menambah keluarga). dari situ akan memilih
+value dari lokasi. lalu dari id kota akan di select ke kecamatan lalu iterasi lagi ke kelurahan. Seharusnya karna sudah mendapat
+ID kelurahan maka akan dilist Penduduk yang ada di kelurahan tersebut dengan GET.
 
 Additional Notes:
 1. Menambahkan error page
