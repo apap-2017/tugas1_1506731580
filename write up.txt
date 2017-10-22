@@ -40,7 +40,7 @@ Apabila pada penduduk yang statusnya masih hidup, maka akan muncul tombol NONAKT
 akan di POST dan sehingga di set (update) status seseorang tersebut is_wafat nya true. maka apabila mengunjungi halaman
 orang tersebut akan tidak ada tombol tersebut kembali
 
-Fitur8: 
+Fitur8: Mencari Penduduk di Lokasi 
 Untuk pemilihan cari penduduk melalui dropdown (konsepnya seperti yang dilakukan di Menambah keluarga). dari situ akan memilih
 value dari lokasi. lalu dari id kota akan di select ke kecamatan lalu iterasi lagi ke kelurahan. Seharusnya karna sudah mendapat
 ID kelurahan maka akan dilist Penduduk yang ada di kelurahan tersebut dengan GET.
@@ -62,3 +62,13 @@ melakukan input. dan memudahkan untuk memastikan format yang dimasukan sudah ben
 => pada tugas kali ini saya lebih memahami bahwa secara lebih mudah dibuat AI atau AUTO INCREMENT di database
 yang akan memudahkan dan mengoptimasikan input terutama terkait dengan ID. Penambahan primary key juga sangat 
 membantu dan memudahkan pencarian dimana seharusnya setiap tabel mempunyai primary key. 
+6. Project structure
+=> selain dibedakan menjadi dua yakni resources dan java maka untuk keterhubungan juga diperlukan ke database.
+Di Java terdapat 
+-DAO yang berisi Mapper yang dipecah jadi untuk alamat (kecamatan, kelurahan, kota)
+-Model berisi masing-masing skema pada database yakni penduduk, keluarga , kecamatan, kelurahan, kota
+-Service meliputi database dan service yang terhubung ke mapper. Masing2 memiliki sendiri
+-Controller hanya ada satu untuk total dimana dia akan mengatur kemana akses tampilan halaman
+Di Resources
+-berisi Templates yang berisikan halaman-halaman html yang akan diakses berserta fragmen dan error page
+-yang menunjang html dengan mengakses library di static
