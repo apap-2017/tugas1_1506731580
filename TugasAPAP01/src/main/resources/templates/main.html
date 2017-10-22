@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SISTEM INFORMASI KEPENDUDUKAN DKI JAKARTA</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="navbar-nav mr-auto"><a class="nav-link" href="/">Home</a></li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search"
+					aria-label="Search" />
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+					search</button>
+			</form>
+		</div>
+	</nav>
+	<div class="container">
+		<h1 class="mt-5">Sistem Informasi Kependudukan Online Provinsi
+			DKI Jakarta</h1>
+		<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi
+			DKI Jakarta</p>
+	</div>
+	<hr/>
+	<div class="col-sm-6">
+		<div class="modal-body">
+			<h2 class="mt-5">Lihat data penduduk</h2>
+			<div class="form-group">
+				<form action="/penduduk" method="get">
+					<label for="id">Masukan nomor induk kependudukan</label> <input
+						name="nik" class="form-control"
+						placeholder="ID Penduduk"></input>
+						<br/>
+					<button type="submit" class="btn btn-success">lihat</button>
+				</form>
+			</div>
+			<h2 class="mt-5">Lihat data berdasarkan NKK</h2>
+			<div class="form-group">
+				<form action="/keluarga" method="get">
+					<label for="id">Masukan nomor kartu keluarga</label> <input
+						name="nomor_kk" class="form-control" 
+						placeholder="ID Keluarga"></input>
+					<button type="submit" class="btn btn-success">lihat</button>
+				</form>
+				<br/>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

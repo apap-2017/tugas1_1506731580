@@ -1,0 +1,63 @@
+Farah Agia Ramadhina
+1506731580
+APAP-A
+
+Fitur 1: Menampilkan Penduduk
+pada fitur ini menampilkan isi dari Database penduduk, berupa data dari penduduk itu sendiri.
+cara pengambilannya. Dengan mengambil database yg dihubungkan ke mapper dan disimpan dengan object 
+Penduduk di model. Kemudian lewat controller akan ditampilkan di page penduduk?nik={nik}
+
+Fitur 2: Menampilkan Keluarga
+Sama seperti fitur 1, pada fitur ini menampilkan isi dari database Keluarga berdasarkan NKK keluarga.
+Karena mengacu NKK, jadi akan menampilkan List of Penduduk yang mempunyai NKK yang sama sesuai
+keluarga?nkk={nkk}. Dimana penduduk yang terdapat di keluarga itu memiliki alamat yang sama.
+
+Fitur 3: Menambah Penduduk
+Fitur ini akan menambahkan database Penduduk. Data dari penduduk yang diinput hanya data tertentu.
+Untuk NKK sendiri akan di-generate berdasarkan ketentuan. Dimana yang dilakukan adalah memecah split 
+tanggal lahir karena urutannya berbeda lalu diconcate semua menjadi String. Setelah itu NIK telah digenerate
+Lalu melalui mapper akan dimasukan ke database. Setelah sukses akan menuju ke page Sukses.
+
+Fitur 4: Menambah Keluarga
+pada fitur ini mengambil data yang tersedia yakni berupa alamat, RT, RW, nama kota, kelurahan dan kecamatan.
+Melalui controller apabila ingin mengakses keluarga/tambah maka akan ditampilkan page 'addKeluarga'. Yang 
+disajikan inputan yang diisi sendiri berupa alamat, rt, dan RW. sedangkan untuk pengambilan nama kelurahan akan
+langsung terhubung dengan Nama Kota dan Nama Kecamatan, sehingga dapat tervalidasi otomatis.
+
+Fitur 5: Update Penduduk
+Setelah mengakses page 'penduduk/ubah/{nik}' yang secara otomatis terhubung dengan tampilan yang mirip dengan 
+add Penduduk. Apabila kita telah submit halaman tersebut, akan terotomatis di POST dan data di database diupdate 
+dengan SET lalu diarahkan ke page SUKSES
+
+Fitur6: Update Keluarga
+konsep pada fitur6 mirip dengan fitur 5, namun ada constraint dengan NIK sehingga NIK juga dapat berpengaruh.
+Yang dilakukan adalah  mengubah menjadi tidak berlaku dan mengupdate informasi dari Keluarga. Untuk NKK sendiri 
+apabila berubah harus digenerate. Jika telah berhasil maka menuju page SUKSES. untuk file yang saya buat di fitur
+ini masih ada kesalahan.
+
+Fitur7: Menonaktifkan penduduk
+Apabila pada penduduk yang statusnya masih hidup, maka akan muncul tombol NONAKTIFKAN. Setelah diklik tombol tersebut
+akan di POST dan sehingga di set (update) status seseorang tersebut is_wafat nya true. maka apabila mengunjungi halaman
+orang tersebut akan tidak ada tombol tersebut kembali
+
+Fitur8: 
+Untuk pemilihan cari penduduk melalui dropdown (konsepnya seperti yang dilakukan di Menambah keluarga).
+Seharusnya akan menampilkan cari berdasarkan lokasi
+
+Additional Notes:
+1. Menambahkan error page
+=> sesuai yang ada di tutorial 6, error page tersebut akan menuju setiap halaman yang tidak ditemukan
+2. Tampilan
+=> Bootstrap yang saya gunakan tidak seragam tampilannya, kadang bisa terload dan tidak. Untuk template
+dasar semua page memakai bootstrap.
+3. Layering
+=> keuntungan dari layering di tugas ini menjadi lebih terstruktur dalam kinerja pemograman. Layering 
+sendiri juga sangat membantu untuk mengintgrasikan dari format database, tampilan, serta logic dan query 
+dari jalannya program.
+4. Validasi
+=> penggunaan opsi, date, dan dropdown lebih memudahkan dan mengurangi kesalahan yang dibuat user dalam 
+melakukan input. dan memudahkan untuk memastikan format yang dimasukan sudah benar
+5. Optimasi Database
+=> pada tugas kali ini saya lebih memahami bahwa secara lebih mudah dibuat AI atau AUTO INCREMENT di database
+yang akan memudahkan dan mengoptimasikan input terutama terkait dengan ID. Penambahan primary key juga sangat 
+membantu dan memudahkan pencarian dimana seharusnya setiap tabel mempunyai primary key. 

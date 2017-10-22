@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<title>Add Keluarga</title>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<form action="/keluarga/tambah" method="POST" th:object="${keluarga}">
+			<div class="form-group">
+				<label for="alamat">Alamat</label> <input type="text"
+					class="form-control" name="alamat" placeholder="Alamat"
+					th:value="${keluarga.alamat}" th:field="*{alamat}" />
+			</div>
+
+			<div class="form-group">
+				<label for="rt">RT</label> <input type="text" class="form-control"
+					name="RT" placeholder="RT" th:value="${keluarga.RT}"
+					th:field="*{RT}" />
+			</div>
+
+			<div class="form-group">
+				<label for="RW">RW</label> <input type="text" class="form-control"
+					name="RW" placeholder="RW" th:value="${keluarga.RW}"
+					th:field="*{RW}" />
+			</div>
+
+			<div class="form-group">
+				<label for="kelurahan">Kelurahan/Desa</label> <select
+					name="id_kelurahan" class="form-control selectpicker"
+					data-live-search="true" th:field="*{id_kelurahan}" id="kelurahan">
+					<option th:each="kelurahan: ${kelurahans}"
+						th:value="${kelurahan.id}" th:text="${kelurahan.nama_kelurahan}"> </option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="kecamatan">Kecamatan</label> <input type="text"
+					class="form-control" name="kecamatan" placeholder="Kecamatan"
+					id="kecamatan" readonly="readonly" />
+			</div>
+
+			<div class="form-group">
+				<label for="kota">Kota</label> <input type="text"
+					class="form-control" name="kota" placeholder="Kota" id="kota"
+					readonly="readonly" />
+			</div>
+
+			<input type="hidden" name="kode_kecamatan" id="kode_kecamatan" />
+
+			<div class="text-center">
+				<input type="submit" value="Simpan" class="btn btn-success btnNext"></input>
+			</div>
+		</form>
+
+
+	</div>
+	<script th:inline="javascript">
+	var kelurahans = [[${kelurahans}]];
+	var allKelurahan = {};
+	
+	$( document ).ready(function() {
+		kelurahans.forEach(function(kelurahan) {
+			allKelurahan[kelurahan.id] = kelurahan;	
+		})
+	});
+	
+	$('#kelurahan').on('change', function() {
+	  $('#kecamatan').val(allKelurahan[this.value].nama_kecamatan);
+	  $('#kota').val(allKelurahan[this.value].nama_kota);
+	  $('#kode_kecamatan').val(allKelurahan[this.value].kode_kecamatan);
+	})
+</script>
+</body>
+</html>

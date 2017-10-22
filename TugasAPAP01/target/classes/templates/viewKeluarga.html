@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet"
+	href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"></link>
+<script type = "text/javascript">
+$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+</script>
+<title>View Penduduk by NKK</title>
+
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<br/>
+	<center>
+	<h4 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}">Penduduk
+			NIK</h4>
+	</center>
+	<div class="row">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-2">
+			<p>
+				<strong>NKK</strong>
+			</p>
+			<p>
+				<strong>Alamat</strong>
+			</p>
+			<p>
+				<strong>RT/RW</strong>
+			</p>
+			<p>
+				<strong>Kelurahan/Desa</strong>
+			</p>
+			<p>
+				<strong>Kecamatan</strong>
+			</p>
+			<p>
+				<strong>Kota</strong>
+			</p>
+
+
+		</div>
+		<div class="col-sm-5">
+			<p th:text="${keluarga.nomor_kk}">Keluarga NKK</p>
+			<p th:text="${keluarga.alamat}">Keluarga alamat</p>
+			<p th:text="${keluarga.RT} +'/' + ${keluarga.RW}">Keluarga RTRW</p>
+			<p th:text="${keluarga.nama_kelurahan}">Keluarga kelurahan</p>
+			<p th:text="${keluarga.nama_kecamatan}">Keluarga kecamatan</p>
+			<p th:text="${keluarga.nama_kota}">Keluarga kecamatan</p>
+		</div>
+	</div>
+	<br/>
+	<table id="myTable">
+		<thead>
+		<tr>
+			<th>No</th>
+			<th>Nama</th>
+			<th>NIK</th>
+			<th>Jenis Kelamin</th>
+			<th>Tempat Lahir</th>
+			<th>Tanggal Lahir</th>
+			<th>Agama</th>
+			<th>Status Perkawinan</th>
+			<th>Status Dalam Keluarga</th>
+			<th>Kewarganegaraan</th>
+		</tr>
+		</thead>
+	<tbody>
+		<tr th:each="penduduk,iterationStatus: ${keluarga.warga}">
+			<td th:text="${iterationStatus.count}">No.1</td>
+			<td th:text="${penduduk.nama}">Penduduk Nama</td>
+			<td th:text="${penduduk.nik}">Penduduk Nik</td>
+			<td th:text="${penduduk.jenis_kelamin}==0?'Laki-laki':'Perempuan'">Penduduk Jenis Kelamin</td>
+			<td th:text="${penduduk.tempat_lahir}">Penduduk Tempat Lahir</td>
+			<td th:text="${penduduk.tanggal_lahir}">Penduduk Tanggal Lahir</td>
+			<td th:text="${penduduk.agama}">Penduduk agama</td>
+			<td th:text="${penduduk.status_perkawinan}">Penduduk status perkawinan</td>
+			<td th:text="${penduduk.status_dalam_keluarga}">Penduduk status dalam keluarga</td>	
+			<td th:text="${penduduk.is_wni}==1?'WNI':'WNA'">Penduduk Kewarganergaraan</td>
+		</tr>
+	</tbody>
+	</table>
+</body>
+</html>
