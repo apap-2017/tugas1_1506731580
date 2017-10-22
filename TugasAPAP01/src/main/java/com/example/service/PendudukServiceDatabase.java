@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.PendudukMapper;
 import com.example.model.PendudukModel;
+import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,5 +44,10 @@ public class PendudukServiceDatabase implements PendudukService
 		 log.info("nonkatifkan penduduk");
 		 pendudukMapper.setWafat(penduduk.getNik());
 	 }
-
+    
+    @Override
+	public List<PendudukModel> selectPendudukByIdKelurahan(String id_kelurahan) {
+		log.info("select penduduk with id_kelurahan {}", id_kelurahan);
+		return pendudukMapper.selectPendudukByIdKelurahan(""+id_kelurahan);
+	}
 }

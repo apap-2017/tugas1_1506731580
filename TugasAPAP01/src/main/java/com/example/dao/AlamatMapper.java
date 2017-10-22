@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface AlamatMapper {
@@ -27,6 +28,16 @@ public interface AlamatMapper {
 	
 	@Select("SELECT * FROM kota")
     List<KotaModel> selectKotas();
+	
+	@Select("SELECT * FROM kecamatan where id = #{id}")
+	KecamatanModel selectKecamatanById(@Param("id") int id);
+	
+	@Select("SELECT * FROM kelurahan where id = #{id}")
+	KelurahanModel selectKelurahanById(@Param("id") int id);
+	
+	@Select("SELECT * FROM kota where id = #{id}")
+	KotaModel selectKotaById(@Param("id") int id);
+	
 	
 	
 }

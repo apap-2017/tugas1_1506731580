@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.model.PendudukModel;
+import java.util.List;
 
 @Mapper
 public interface PendudukMapper
@@ -49,4 +50,10 @@ public interface PendudukMapper
 	
 	@Update("UPDATE penduduk SET is_wafat = 1 WHERE nik = #{nik}")
 	void setWafat(@Param("nik") String nik);
+	
+	@Select("SELECT nik, nama, jenis_kelamin, tanggal_lahir FROM penduduk JOIN keluarga ON penduduk.id_keluarga = keluarga.id JOIN "
+			+ "kelurahan ON keluarga.id_kelurahan = kelurahan.id JOIN kecamatan ON "
+			+ "kelurahan.id_kecamatan = kecamatan.id JOIN kota ON kecamatan.id_kota = kota.id "
+			+ "WHERE keluarga.id_kelurahan = #{id_kelurahan}")
+	List<PendudukModel> selectPendudukByIdKelurahan(@Param("id_kelurahan") String id_kelurahan);
 }

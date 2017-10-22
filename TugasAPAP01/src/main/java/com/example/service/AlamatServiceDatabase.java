@@ -30,4 +30,20 @@ public class AlamatServiceDatabase implements AlamatService {
 	public List<KotaModel> selectKotas() {
 		return alamatMapper.selectKotas();
 	}
+	
+	@Override
+	public KecamatanModel selectKecamatanById(int id){
+		return alamatMapper.selectKecamatanById(id);
+	}
+	
+	@Override
+	public KelurahanModel selectKelurahanById(int id){
+		return alamatMapper.selectKelurahanById(id);
+	}
+	
+	@Override
+	public KotaModel selectKotaById(int id){
+		return alamatMapper.selectKotaById(id);
+	}
+
 }
